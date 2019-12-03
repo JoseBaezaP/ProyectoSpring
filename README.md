@@ -7,4 +7,4 @@ Para poder correr el proyecto se debe de tener una base de datos llamada bibliot
 o importar la base de datos que se encuentra en el proyecto.
 ## Tercer paso
 Si te conectas a tu mysql por un usuario o contraseña especifica, puedes cambiarlo desde el archivo Conexion.java  
-que se encuentra el paquete de modelo de la carpeta source.
+que se encuentra en el paquete modelo de la carpeta source.
