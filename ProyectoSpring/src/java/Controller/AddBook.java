@@ -43,7 +43,7 @@ public class AddBook {
      * @return mav -Regresa la vista para el usuario
      */
     @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView mostarDatos(){
+    public ModelAndView mostrarDatos(){
         ModelAndView mav=new ModelAndView();
         mav.setViewName("add");
         mav.addObject("libros",new Libro());
