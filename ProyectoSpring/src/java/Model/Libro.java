@@ -6,7 +6,7 @@
 package Model;
 
 /**
- *
+ *Clase Libro: Este es el objeto libro que no adyudará para poder guardar los datos necesarios
  * @author josed
  */
 public class Libro {

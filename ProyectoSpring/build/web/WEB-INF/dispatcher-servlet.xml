@@ -35,10 +35,10 @@
     <!--
     The index controller.
     -->
-    <bean name="delete" class="Controller.DeleteController" />
-    <bean name="edit" class="Controller.EditController" />
-    <bean name="homeController" class="Controller.Controller" />
-    <bean name="add" class="Controller.AddController" />
+    <bean name="delete" class="Controller.DeleteBook" />
+    <bean name="edit" class="Controller.EditBook" />
+    <bean name="homeController" class="Controller.ListBooks" />
+    <bean name="add" class="Controller.AddBook" />
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />

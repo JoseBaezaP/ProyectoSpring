@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
- * @author josed
+ *Clase ListBook: La acción que hace esta esta clase es recuperar todos
+ * datos que estan la base de datos para poder imprimirlos en la primera vista
  */
 
-public class Controller {
+public class ListBooks {
     private JdbcTemplate jdbcTemplate;
     
-    public Controller(){
+    public ListBooks(){
         Conexion con=new Conexion();
         this.jdbcTemplate=new JdbcTemplate(con.conectar());
     }
     
     @RequestMapping("index.htm")
-    public ModelAndView home(){
+    public ModelAndView mostrarLibros(){
     ModelAndView mav = new ModelAndView();
     String sql="select * from libros";
     List datos=this.jdbcTemplate.queryForList(sql);

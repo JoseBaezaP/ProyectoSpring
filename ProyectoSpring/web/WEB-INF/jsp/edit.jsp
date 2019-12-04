@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <h1>Añadir libro</h1>
+        <h1>Editar libro</h1>
         <form:form method="post" commandName="libros">
             <form:errors path="*" element="div" cssClass="alert alert-danger"/>
             <p>

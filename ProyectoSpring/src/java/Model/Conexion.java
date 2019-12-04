@@ -8,7 +8,7 @@ package Model;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
- *
+ *Clase Conexion: Lo unico que hace esta clase es conectarse a la base de datos.
  * @author josed
  */
 public class Conexion {

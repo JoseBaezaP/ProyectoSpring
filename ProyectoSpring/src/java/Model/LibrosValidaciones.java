@@ -12,7 +12,8 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 /**
- *
+ *Clase LibrosValidaciones: La que hace esta clase es validar que los campos para poder ingresar un libro
+ * no se encuentren vacios o nulos
  * @author josed
  */
 public class LibrosValidaciones implements Validator{

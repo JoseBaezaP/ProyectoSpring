@@ -13,18 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
+ *Clase DeleteBook: La acción que hace esta esta clase es recuperar el isbn
+ * del libro para poder elimnarlo de la base de datos.
  * @author josed
  */
-public class DeleteController {
+public class DeleteBook {
    private JdbcTemplate jdbctemplate;
     
-    public DeleteController(){
+    public DeleteBook(){
     Conexion con=new Conexion();
     this.jdbctemplate=new JdbcTemplate(con.conectar());
     }
     @RequestMapping("delete.htm")
-    public ModelAndView form(HttpServletRequest request){
+    public ModelAndView borrarLibro(HttpServletRequest request){
         String isbn=request.getParameter("isbn");
         this.jdbctemplate.update("delete from libros "+"where "+"isbn=?",
                                     isbn);

@@ -22,23 +22,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+
 /**
-/**
- *
+ *Clase EditBook: La acción que hace esta esta clase es recuperar los datos
+ * de la base de datos, para mostrarlo en la vista y tambien recupera los 
+ * datos que sufrieron un cambio para poder hacer la actualiazción.
  * @author josed
  */
 @Controller
 @RequestMapping("edit.htm")
-public class EditController {
+public class EditBook {
        LibrosValidaciones librosValidar;
     private JdbcTemplate jdbctemplate;
-       public EditController(){
+       public EditBook(){
     this.librosValidar=new LibrosValidaciones();
     Conexion con=new Conexion();
     this.jdbctemplate=new JdbcTemplate(con.conectar());
     }
     @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView form(HttpServletRequest request){
+    public ModelAndView mostrarDatos(HttpServletRequest request){
         ModelAndView mav=new ModelAndView();
         String isbn=request.getParameter("isbn");
         Libro libro=this.selectLibro(isbn);
@@ -47,7 +49,7 @@ public class EditController {
         return mav;
     }
      @RequestMapping(method=RequestMethod.POST)
-    public ModelAndView form(@ModelAttribute("libros") Libro u,BindingResult result,
+    public ModelAndView actualizarDatos(@ModelAttribute("libros") Libro u,BindingResult result,
                                 SessionStatus status, HttpServletRequest request){
       
         this.librosValidar.validate(u, result);
