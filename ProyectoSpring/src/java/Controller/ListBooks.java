@@ -17,12 +17,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class ListBooks {
     private JdbcTemplate jdbcTemplate;
-    
+    /**
+     * <p>
+     * Se establece la conexion a la base de datos.
+     */
     public ListBooks(){
         Conexion con=new Conexion();
         this.jdbcTemplate=new JdbcTemplate(con.conectar());
     }
-    
+    /**
+     * <p>
+     * Recupera los datos de la base de datos para poder imprimirlos en la vista
+     * @return Regresa la vista principal del programa
+     */
     @RequestMapping("index.htm")
     public ModelAndView mostrarLibros(){
     ModelAndView mav = new ModelAndView();

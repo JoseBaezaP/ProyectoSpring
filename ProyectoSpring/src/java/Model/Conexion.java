@@ -12,6 +12,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  * @author josed
  */
 public class Conexion {
+     /**
+     * <p>
+     * Hace la conexcion a la base de datos y crea un objeto para poder validar los campo
+     */
     public DriverManagerDataSource conectar(){
         DriverManagerDataSource dataSource= new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");

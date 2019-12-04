@@ -22,7 +22,12 @@ public class LibrosValidaciones implements Validator{
     public boolean supports(Class<?> type) {
        return Libro.class.isAssignableFrom(type);
     }
-
+    /**
+     * <p>
+     * Verifica que los campos de las vistas add y edit no se encuentren en null o vacios
+     * @param o recupera el objeto con los valores a probar
+     * @param errors vuelve el error obtenido por la página
+     */
     @Override
     public void validate(Object o, Errors errors) {
        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"isbn","required.isbn","El campo de ISBN es obligatorio");

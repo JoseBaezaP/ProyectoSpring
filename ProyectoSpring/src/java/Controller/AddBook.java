@@ -52,8 +52,9 @@ public class AddBook {
       /**
      * <p>
      * Guarda los datos recuperados por el usuario.
-     * @param u Son los datos recuperados por el usuario. 
-     * @return mav -Regresa la vista para el usuario
+     * @param u Que ingreso el usuario
+     * @return mav,ModelAndView("redirect:/index.htm" -Si encuentra un problema de validacion, se regresa a la pagina
+     * para ingresar  un libro con los errores, si no se hubieron errores se va a la vista principal para ver los libros
      */
      @RequestMapping(method=RequestMethod.POST)
     public ModelAndView guardarDatos(@ModelAttribute("libros") Libro u,BindingResult result,

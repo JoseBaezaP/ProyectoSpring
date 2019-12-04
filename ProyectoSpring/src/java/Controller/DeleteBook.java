@@ -19,11 +19,18 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class DeleteBook {
    private JdbcTemplate jdbctemplate;
-    
+      /**
+     * <p>
+     * Se establece la conexion a la base de datos.
+     */
     public DeleteBook(){
     Conexion con=new Conexion();
     this.jdbctemplate=new JdbcTemplate(con.conectar());
     }
+    /**
+     * <p>
+     * Se establece la conexion a la base de datos.
+     */
     @RequestMapping("delete.htm")
     public ModelAndView borrarLibro(HttpServletRequest request){
         String isbn=request.getParameter("isbn");

@@ -34,11 +34,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class EditBook {
        LibrosValidaciones librosValidar;
     private JdbcTemplate jdbctemplate;
+     /**
+     * <p>
+     * Se establece la conexion a la base de datos.
+     */
        public EditBook(){
     this.librosValidar=new LibrosValidaciones();
     Conexion con=new Conexion();
     this.jdbctemplate=new JdbcTemplate(con.conectar());
     }
+         /**
+     * <p>
+     * Al ingresar a la página para poder editar un libro, se le pasa un objeto de tipo libro
+     * para poder guardar los datos momentaneamente.
+     * @return mav -Regresa la vista para el usuario
+     */
     @RequestMapping(method=RequestMethod.GET)
     public ModelAndView mostrarDatos(HttpServletRequest request){
         ModelAndView mav=new ModelAndView();
@@ -48,6 +58,13 @@ public class EditBook {
         mav.addObject("libros",new Libro(request.getParameter("isbn"),libro.getNombre(),libro.getAutor(),libro.getVersion(),libro.getEditorial()));
         return mav;
     }
+     /**
+     * <p>
+     * Actualiza los datos recuperados por el usuario.
+     * @param u Son los datos que ingreso el usuario. 
+     * @return mav,ModelAndView("redirect:/index.htm" -Si encuentra un problema de validacion, se regresa a la pagina
+     * para ingresar  un libro con los errores, si no se hubieron errores se va a la vista principal para ver los libros
+     */
      @RequestMapping(method=RequestMethod.POST)
     public ModelAndView actualizarDatos(@ModelAttribute("libros") Libro u,BindingResult result,
                                 SessionStatus status, HttpServletRequest request){
@@ -65,6 +82,12 @@ public class EditBook {
            return new ModelAndView("redirect:/index.htm");
         }   
     }
+     /**
+     * <p>
+     * Recupera los datos de la base de datos.
+     * @param isbn El la llave primaria del libro. 
+     * @return Regresa un objeto de tipo libro con los datos recueperados de la base de datos.
+     */
     public Libro selectLibro(String isbn){
         final Libro libro= new Libro();
         String quer= "SELECT *FROM libros WHERE isbn='"+isbn+"'";
