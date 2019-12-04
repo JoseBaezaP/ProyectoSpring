@@ -15,9 +15,9 @@
     <body>
         <h1>Añadir libro</h1>
         <form:form method="post" commandName="libros">
-            <form:errors path="" element="div" cssClass="alert alert-danger"/>
+            <form:errors path="*" element="div" cssClass="alert alert-danger"/>
             <p>
-                <form:label path="isbn" >ID:</form:label>
+                <form:label path="isbn" >Isbn:</form:label>
                 <form:input path="isbn" cssClass="form-control"/>
             </p>
             <p>

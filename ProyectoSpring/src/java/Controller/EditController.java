@@ -43,7 +43,7 @@ public class EditController {
         String isbn=request.getParameter("isbn");
         Libro libro=this.selectLibro(isbn);
         mav.setViewName("edit");
-        mav.addObject("libros",new Libro(isbn,libro.getNombre(),libro.getAutor(),libro.getVersion(),libro.getEditorial()));
+        mav.addObject("libros",new Libro(request.getParameter("isbn"),libro.getNombre(),libro.getAutor(),libro.getVersion(),libro.getEditorial()));
         return mav;
     }
      @RequestMapping(method=RequestMethod.POST)
@@ -51,11 +51,17 @@ public class EditController {
                                 SessionStatus status, HttpServletRequest request){
       
         this.librosValidar.validate(u, result);
-   String isbn=request.getParameter("isbn");
+        if(result.hasErrors()){
+            ModelAndView mav=new ModelAndView();
+            mav.setViewName("add");
+            mav.addObject("libros",new Libro());
+            return mav;
+        }else{
+            String isbn=request.getParameter("isbn");
            this.jdbctemplate.update("update libros "+"set nombre=?,"+" autor=?,"+" version=?,"+" editorial=? "+"where "+"isbn=?",
                                     u.getNombre(),u.getAutor(),u.getVersion(),u.getEditorial(),isbn);
            return new ModelAndView("redirect:/index.htm");
-       
+        }   
     }
     public Libro selectLibro(String isbn){
         final Libro libro= new Libro();

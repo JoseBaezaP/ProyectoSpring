@@ -43,10 +43,15 @@ public class AddController {
     public ModelAndView form(@ModelAttribute("libros") Libro u,BindingResult result,
                                 SessionStatus status){
        this.librosValidar.validate(u, result);
-   
-           this.jdbctemplate.update("insert into libros (isbn,nombre,autor,version,editorial) values(?,?,?,?,?)",
+        if(result.hasErrors()){
+            ModelAndView mav=new ModelAndView();
+            mav.setViewName("add");
+            mav.addObject("libros",new Libro());
+            return mav;
+        }else{
+         this.jdbctemplate.update("insert into libros (isbn,nombre,autor,version,editorial) values(?,?,?,?,?)",
                                     u.getIsbn(),u.getNombre(),u.getAutor(),u.getVersion(),u.getEditorial());
            return new ModelAndView("redirect:/index.htm");
-       
+        }  
     }
 }
